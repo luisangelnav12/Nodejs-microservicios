@@ -4,8 +4,8 @@ exports.success = function (req, res, message, status) {
 
   return res.status(statusCode).send({
     error: false,
-    status,
-    body: statusMessage,
+    status: status,
+    body: message,
   });
 };
 
@@ -14,7 +14,7 @@ exports.error = function (req, res, message, status) {
   let statusMessage = message || "Internal Server Error";
   return res.status(statusCode).send({
     error: false,
-    status,
-    body: statusMessage,
+    status: status,
+    body: message,
   });
 };

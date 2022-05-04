@@ -1,7 +1,7 @@
 const express = require("express");
 
 const response = require("../../../network/response");
-const Controler = require("./index");
+const Controller = require("./index");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -27,13 +27,12 @@ router.get("/:id", (req, res) => {
 router.post("/", upsert);
 
 function upsert(req, res) {
-  Controler.upsert(req.body)
+  Controller.upsert(req.body)
     .then((user) => {
-      response.success(req, res, user, 200);
+      response.success(req, res, user, 201);
     })
     .catch((err) => {
       response.error(req, res, err.message, 500);
     });
 }
-
 module.exports = router;
